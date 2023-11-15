@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
