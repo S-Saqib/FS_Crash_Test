@@ -16,9 +16,8 @@ int main() {
     strcpy(FILEPATH, PARENTDIRPATH);
     strcat(FILEPATH, FILENAME);
 
-    // Open the file for overwriting data
-    // fd = open(FILEPATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-    fd = open(FILEPATH, O_WRONLY);
+    // Open the file (create if not exists) for writing
+    fd = open(FILEPATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
     if (fd == -1) {
         perror("Error opening file");
         exit(EXIT_FAILURE);
@@ -28,11 +27,11 @@ int main() {
     char block1[BLOCK_SIZE];
     char block2[BLOCK_SIZE];
 
-    // Fill block 1 with 'B'
-    memset(block1, 'B', BLOCK_SIZE);
+    // Fill block 1 with 'A'
+    memset(block1, 'A', BLOCK_SIZE);
 
-    // Fill block 2 with 'B'
-    memset(block2, 'B', BLOCK_SIZE);
+    // Fill block 2 with 'A'
+    memset(block2, 'A', BLOCK_SIZE);
 
     // Write two blocks to the file
     bytes_written = write(fd, block1, BLOCK_SIZE);
