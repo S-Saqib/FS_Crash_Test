@@ -20,7 +20,7 @@ int main() {
         } else {
             perror("Error opening parent directory for fsync");
         }
-        printf("File '%s' removed successfully.\n", filename);
+        printf("File '%s' removed successfully.\n", FILEPATH);
     } else {
         perror("Error removing file");
     }
