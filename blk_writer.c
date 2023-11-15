@@ -12,7 +12,7 @@ int main() {
     int fd;
     ssize_t bytes_written;
 
-    char *FILEPATH = new char[100];
+    char FILEPATH[100] = "";
     strcpy(FILEPATH, PARENTDIRPATH);
     strcat(FILEPATH, FILENAME);
 

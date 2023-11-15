@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 
 int main() {
-    char *FILEPATH = new char[100];
+    char FILEPATH[100] = "";
     strcpy(FILEPATH, PARENTDIRPATH);
     strcat(FILEPATH, FILENAME);
 

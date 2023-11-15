@@ -12,12 +12,12 @@ int main() {
     int fd;
     ssize_t bytes_written;
 
-    char *FILEPATH = new char[100];
+    char FILEPATH[100] = "";
     strcpy(FILEPATH, PARENTDIRPATH);
     strcat(FILEPATH, FILENAME);
 
     // Open the file (create if not exists) for writing
-    fd = open(FILEPATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    fd = open(FILENAME, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
     if (fd == -1) {
         perror("Error opening file");
         exit(EXIT_FAILURE);
