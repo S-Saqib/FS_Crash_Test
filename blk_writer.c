@@ -41,6 +41,10 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
+    printf("Sleeping for 5 seconds...\n");
+    sleep(5); // Sleep for 5 seconds
+    printf("Awake!\n");
+
     bytes_written = write(fd, block2, BLOCK_SIZE);
     if (bytes_written == -1) {
         perror("Error writing block 2");
