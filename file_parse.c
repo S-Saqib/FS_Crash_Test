@@ -4,15 +4,21 @@
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 
-int main() {
+int main(int argc, char *argv[]) {
     FILE *file;
     char currentChar, prevChar;
     int count;
 
     // Open the file for reading
     char FILEPATH[100] = "";
-    strcpy(FILEPATH, PARENTDIRPATH);
-    strcat(FILEPATH, FILENAME);
+    if (argc == 2) {
+        strcpy(FILEPATH, argv[1]);
+    }
+    else {
+        strcpy(FILEPATH, PARENTDIRPATH);
+        strcat(FILEPATH, FILENAME);
+    }
+    
     file = fopen(FILEPATH, "r");
     if (file == NULL) {
         perror("Error opening file");

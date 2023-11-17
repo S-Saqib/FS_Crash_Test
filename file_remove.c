@@ -2,14 +2,20 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <string.h>
 
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 
-int main() {
+int main(int argc, char *argv[]) {
     char FILEPATH[100] = "";
-    strcpy(FILEPATH, PARENTDIRPATH);
-    strcat(FILEPATH, FILENAME);
+    if (argc == 2) {
+        strcpy(FILEPATH, argv[1]);
+    }
+    else {
+        strcpy(FILEPATH, PARENTDIRPATH);
+        strcat(FILEPATH, FILENAME);
+    }
 
     if (remove(FILEPATH) == 0) {
         // Call fsync to flush changes to disk

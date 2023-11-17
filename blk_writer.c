@@ -11,14 +11,19 @@
 
 char block1[BLOCK_SIZE];
 
-int main() {
+int main(int argc, char *argv[]) {
     int fd;
     ssize_t bytes_written;
     struct timeval startTime, endTime;
 
     char FILEPATH[100] = "";
-    strcpy(FILEPATH, PARENTDIRPATH);
-    strcat(FILEPATH, FILENAME);
+    if (argc == 2) {
+        strcpy(FILEPATH, argv[1]);
+    }
+    else {
+        strcpy(FILEPATH, PARENTDIRPATH);
+        strcat(FILEPATH, FILENAME);
+    }
 
     gettimeofday(&startTime, NULL);
     // Open the file for overwriting data
