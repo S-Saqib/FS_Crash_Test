@@ -1,5 +1,5 @@
 ./blk_writer &
 
-sleep 0.1
+sleep 0.2 
 
 sudo reboot
