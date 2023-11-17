@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     // Open the file for reading
     char FILEPATH[100] = "";
     if (argc == 2) {
-        strcpy(FILEPATH, argv[0]);
+        strcpy(FILEPATH, argv[1]);
     }
     else {
         strcpy(FILEPATH, PARENTDIRPATH);

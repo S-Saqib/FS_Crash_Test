@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <string.h>
 
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
@@ -9,7 +10,7 @@
 int main(int argc, char *argv[]) {
     char FILEPATH[100] = "";
     if (argc == 2) {
-        strcpy(FILEPATH, argv[0]);
+        strcpy(FILEPATH, argv[1]);
     }
     else {
         strcpy(FILEPATH, PARENTDIRPATH);
