@@ -4,9 +4,11 @@
 #include <fcntl.h>
 #include <string.h>
 
-#define BLOCK_SIZE 4096
+#define BLOCK_SIZE 420000000
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
+
+char block1[BLOCK_SIZE];
 
 int main() {
     int fd;
@@ -24,46 +26,28 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    // Data to be written to the file
-    char block1[BLOCK_SIZE];
-    char block2[BLOCK_SIZE];
-
     // Fill block 1 with 'B'
     memset(block1, 'B', BLOCK_SIZE);
-
-    // Fill block 2 with 'B'
-    memset(block2, 'B', BLOCK_SIZE);
-
-    // Write two blocks to the file
     bytes_written = write(fd, block1, BLOCK_SIZE);
     if (bytes_written == -1) {
         perror("Error writing block 1");
         exit(EXIT_FAILURE);
     }
-
-    printf("Sleeping for 5 seconds...\n");
-    sleep(5); // Sleep for 5 seconds
-    printf("Awake!\n");
-
-    bytes_written = write(fd, block2, BLOCK_SIZE);
-    if (bytes_written == -1) {
-        perror("Error writing block 2");
-        exit(EXIT_FAILURE);
-    }
+    printf("Data written");
 
     // Perform fsync to flush changes to disk
     if (fsync(fd) == -1) {
         perror("Error during fsync");
         exit(EXIT_FAILURE);
     }
+    printf("Fsync completed successfully.\n");
 
     // Close the file
     if (close(fd) == -1) {
         perror("Error closing file");
         exit(EXIT_FAILURE);
     }
-
-    printf("Data written and fsync completed successfully.\n");
+    printf("File closed.\n");
 
     return 0;
 }
