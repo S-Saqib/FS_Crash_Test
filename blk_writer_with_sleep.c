@@ -8,7 +8,7 @@
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 
-int main() {
+int main(int argc, char *argv[]) {
     int fd;
     ssize_t bytes_written;
 
