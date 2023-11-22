@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define BLOCK_SIZE 4096
-#define BLOCK_COUNT 1000000
+#define BLOCK_COUNT 100000
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 
@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
     else {
         numberOfBlocks = BLOCK_COUNT;
     }
+    printf("Writing %d blocks\n", numberOfBlocks);
 
     // Open the file for overwriting data
     // fd = open(FILEPATH, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);

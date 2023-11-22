@@ -5,7 +5,7 @@
 #include <string.h>
 #include <sys/time.h>
 
-#define BLOCK_SIZE 420000000
+#define BLOCK_SIZE 409600000
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 

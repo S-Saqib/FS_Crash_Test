@@ -4,7 +4,7 @@
 #include <fcntl.h>
 #include <string.h>
 
-#define BLOCK_SIZE 420000000
+#define BLOCK_SIZE 409600000
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 char block1[BLOCK_SIZE];
