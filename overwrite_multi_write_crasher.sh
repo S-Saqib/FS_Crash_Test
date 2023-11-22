@@ -5,7 +5,7 @@ if [ $# -ge 1 ]; then
     FILEPATH=$1
 fi
 
-if [$# -ge 2 ]; then
+if [ $# -ge 2 ]; then
     BLOCKCOUNT=$2
 fi
 
