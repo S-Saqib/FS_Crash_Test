@@ -5,6 +5,7 @@
 #include <string.h>
 
 #define BLOCK_SIZE 4096
+#define BLOCK_COUNT 1000000
 #define PARENTDIRPATH "/sheepdog/sbd/dj0/"
 #define FILENAME "foo.txt"
 
@@ -13,12 +14,20 @@ int main(int argc, char *argv[]) {
     ssize_t bytes_written;
 
     char FILEPATH[100] = "";
-    if (argc == 2) {
+    if (argc >= 2) {
         strcpy(FILEPATH, argv[1]);
     }
     else {
         strcpy(FILEPATH, PARENTDIRPATH);
         strcat(FILEPATH, FILENAME);
+    }
+
+    int numberOfBlocks = 0;
+    if (argc >= 3) {
+        numberOfBlocks = atoi(argv[2]);
+    }
+    else {
+        numberOfBlocks = BLOCK_COUNT;
     }
 
     // Open the file for overwriting data
@@ -31,29 +40,18 @@ int main(int argc, char *argv[]) {
 
     // Data to be written to the file
     char block1[BLOCK_SIZE];
-    char block2[BLOCK_SIZE];
 
-    // Fill block 1 with 'B'
+    // Fill blocks with 'B'
     memset(block1, 'B', BLOCK_SIZE);
 
-    // Fill block 2 with 'B'
-    memset(block2, 'B', BLOCK_SIZE);
-
-    // Write two blocks to the file
-    bytes_written = write(fd, block1, BLOCK_SIZE);
-    if (bytes_written == -1) {
-        perror("Error writing block 1");
-        exit(EXIT_FAILURE);
-    }
-
-    printf("Sleeping for 2 seconds...\n");
-    sleep(2); // Sleep for 2 seconds
-    printf("Awake!\n");
-
-    bytes_written = write(fd, block2, BLOCK_SIZE);
-    if (bytes_written == -1) {
-        perror("Error writing block 2");
-        exit(EXIT_FAILURE);
+    // Write blocks to the file
+    while(numberOfBlocks--) {
+        bytes_written = write(fd, block1, BLOCK_SIZE);
+        if (bytes_written == -1) {
+            perror("Error writing block 1");
+            exit(EXIT_FAILURE);
+        }
+        //sleep(0.5); // Sleep for 2 seconds
     }
 
     // Perform fsync to flush changes to disk
