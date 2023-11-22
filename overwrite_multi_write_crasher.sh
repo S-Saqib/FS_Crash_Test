@@ -9,8 +9,8 @@ if [$# -ge 2 ]; then
     BLOCKCOUNT=$2
 fi
 
-./blk_writer_with_sleep $FILEPATH $BLOCKCOUNT &
+./blk_writer_multi_write $FILEPATH $BLOCKCOUNT &
 
-sleep 0.3 
+sleep 0.3
 
 sudo echo c > /proc/sysrq-trigger
