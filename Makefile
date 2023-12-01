@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-SRC_FILES = blk_writer.c blk_writer_multi_write.c file_create.c file_remove.c file_parse.c
+SRC_FILES = blk_writer.c blk_writer_multi_write.c blk_writer_multi_write_uneven.c file_create.c file_remove.c file_parse.c
 EXE_FILES = $(patsubst %.c,%,$(SRC_FILES))
 
 all: $(EXE_FILES)

@@ -1,0 +1,3 @@
+gcc -o one_record_insert_sql_generator one_record_insert_sql_generator.c
+
+./one_record_insert_sql_generator
